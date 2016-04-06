@@ -22,18 +22,16 @@ u = [1, 1, 1]
 y = [10, 20, 30]
 z = [0, 0, 0]
 
-def shape(**kwargs):
-    for x in vector:
-        pass
+def shape(vector):
+    # for x in vector:
+    return len(vector),
         # return (x += 1, )
 
-def vector_add(**kwargs):
-    for x, y in zip(vector1, vector2):
-        return (x + y)
+def vector_add(vector1, vector2):
+    return [(x + y) for x, y in zip(vector1, vector2)]
 
-def vector_sub(**kwargs):
-    for x, y in zip(vector1, vector2):
-        return (x - y)
+def vector_sub(vector1, vector2):
+    return [(x - y) for x, y in zip(vector1, vector2)]
 
 def vector_sum(**kwargs):
     summed_list = zip(**kwargs)
