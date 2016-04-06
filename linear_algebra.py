@@ -31,14 +31,20 @@ def shape(vector):
     return len(vector),
 
 def vector_add(vector1, vector2):
-    return [(x + y) for x, y in zip(vector1, vector2)]
+    if shape(vector1) != shape(vector2):
+        raise ShapeError
+    else:
+        return [(x + y) for x, y in zip(vector1, vector2)]
 
 def vector_sub(vector1, vector2):
-    return [(x - y) for x, y in zip(vector1, vector2)]
-#
-# def vector_sum(**kwargs):
-#     summed_list = zip(**kwargs)
-#     [sum(item for item in summed_list)]
-#
+    if shape(vector1) != shape(vector2):
+        raise ShapeError
+    else:
+        return [(x - y) for x, y in zip(vector1, vector2)]
+
+def vector_sum(*args):
+    summed_list = zip(*args)
+    return [sum(x for x in summed_list)]
+
 def dot(vector1, vector2):
-    sum(x * y for x, y in zip(vector1, vector2))
+    return sum(x * y for x, y in zip(vector1, vector2))
