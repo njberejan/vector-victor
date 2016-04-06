@@ -13,6 +13,10 @@
 # mean of multiple vectors in vector_mean()
 # magnitude in magnitude()
 #RUN nosetests to run the test
+
+class ShapeError(Exception):
+    pass
+
 m = [3, 4]
 n = [5, 0]
 
@@ -22,20 +26,19 @@ u = [1, 1, 1]
 y = [10, 20, 30]
 z = [0, 0, 0]
 
+
 def shape(vector):
-    # for x in vector:
     return len(vector),
-        # return (x += 1, )
 
 def vector_add(vector1, vector2):
     return [(x + y) for x, y in zip(vector1, vector2)]
 
 def vector_sub(vector1, vector2):
     return [(x - y) for x, y in zip(vector1, vector2)]
-
-def vector_sum(**kwargs):
-    summed_list = zip(**kwargs)
-    sum(item for item in summed_list)
-
-def dot(**kwargs):
-    sum(p*q for p,q in zip(vector1, vector2))
+#
+# def vector_sum(**kwargs):
+#     summed_list = zip(**kwargs)
+#     [sum(item for item in summed_list)]
+#
+def dot(vector1, vector2):
+    sum(x * y for x, y in zip(vector1, vector2))
