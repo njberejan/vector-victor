@@ -49,7 +49,6 @@ def vector_sum(*args):
     else:
         return [sum(i) for i in zip(*args)]
 
-
 def dot(vector1, vector2):
     if shape(vector1) != shape(vector2):
         raise ShapeError
@@ -63,4 +62,4 @@ def vector_mean(*args):
     return [float(sum(arg))/len(arg) for arg in zip(*args)]
 
 def magnitude(vector):
-    return [math.sqrt(x * x) for x in vector]
+    return int(math.sqrt(float(sum(x * x for x in vector))))
