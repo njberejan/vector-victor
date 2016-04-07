@@ -36,7 +36,7 @@ def vector_sub(**kwargs):
 
 def vector_sum(**kwargs):
     summed_list = zip(**kwargs)
-    return sum(item) for item in summed_list
+    return return sum(x for x in zip(*args))
 
 def dot(**kwargs):
     sum(p*q for p,q in zip(vector1, vector2))

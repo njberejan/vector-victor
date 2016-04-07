@@ -7,13 +7,13 @@
 # vector shape in shape() !
 # vector addition in vector_add() !
 # vector subtraction in vector_sub() !
-# vector sum in vector_sum() !
-# dot product in dot()
+# vector sum in vector_sum()
+# dot product in dot() !
 # vector multiplication by a scalar in vector_multiply()
 # mean of multiple vectors in vector_mean()
 # magnitude in magnitude()
 #RUN nosetests to run the test
-
+import math
 class ShapeError(Exception):
     pass
 
@@ -43,7 +43,11 @@ def vector_sub(vector1, vector2):
         return [(x - y) for x, y in zip(vector1, vector2)]
 
 def vector_sum(*args):
-    return [x + y + z for x, y, z in zip(*args)]
+    #go over why this works tomorrow
+    if len(set(shape(i) for i in zip(*args)))>1:
+        raise ShapeError
+    else:
+        return [sum(i) for i in zip(*args)]
 
 
 def dot(vector1, vector2):
@@ -51,3 +55,12 @@ def dot(vector1, vector2):
         raise ShapeError
     else:
         return sum(x * y for x, y in zip(vector1, vector2))
+
+def vector_multiply(vector, scalar):
+    return [x * scalar for x in vector]
+
+def vector_mean(*args):
+    return [float(sum(arg))/len(arg) for arg in zip(*args)]
+
+def magnitude(vector):
+    return [math.sqrt(x * x) for x in vector]
